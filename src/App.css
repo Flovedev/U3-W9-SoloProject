@@ -39,8 +39,25 @@
 }
 
 #nav-bar {
-  background-color: #141414;
-  color: #6f6e6c;
+  background-color: transparent;
+}
+
+#basic-nav-dropdown {
+  color: grey;
+}
+
+#basic-nav-dropdown img {
+  width: 30px;
+}
+
+.navbar-toggler-icon {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  #nav-bar {
+    background-color: #141414;
+  }
 }
 
 .netflix-logo {
@@ -48,16 +65,39 @@
   height: 50px;
 }
 
-Nav.Link {
-  color: white;
+.jumbotron {
+  position: relative;
+  background-color: #141414;
 }
 
-.card img {
-  /* width: 200px;
-  height: 290px; */
+.jumbotron > div {
+  color: rgb(135, 139, 135);
+  position: absolute;
+  bottom: 100px;
+  left: 30px;
+}
+
+.jumbotron button {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+#dropdown-basic {
+  background-color: #282c34;
+  border-color: white;
+}
+
+.cards-main {
+  width: 200px;
+  position: relative;
 }
 
 .cards-container {
-  /* position: absolute; */
-  z-index: 2;
+  position: absolute;
+  bottom: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px;
 }

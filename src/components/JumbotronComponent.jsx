@@ -1,15 +1,35 @@
-import { Jumbotron } from "react-bootstrap";
-import sample from "https://www.youtube.com/watch?v=mObK5XD8udk";
+import { Jumbotron, Button } from "react-bootstrap";
+import sample from "../assets/harry.mov";
 
 const JumbotronComponent = () => {
   return (
     <>
-      <Jumbotron>
-        <video className="videoTag" autoPlay loop muted>
+      <Jumbotron className="jumbotron p-0">
+        <video autoPlay loop muted className="w-100">
           <source src={sample} type="video/mp4" />
         </video>
-        <h1>Movie title</h1>
-        <p>Movie comes here</p>
+        <div>
+          <h1>Harry potter</h1>
+          <h1>and the Deathly Hallows: Part 2</h1>
+          <div>
+            <Button variant="light" className="px-5 py-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                class="bi bi-play-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+              </svg>
+              Play
+            </Button>{" "}
+            <Button variant="secondary" className="px-5 py-3">
+              More info
+            </Button>{" "}
+          </div>
+        </div>
       </Jumbotron>
     </>
   );

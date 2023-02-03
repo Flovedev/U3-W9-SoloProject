@@ -2,13 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MainComponent from "./components/MainComponent";
 import NavbarComponent from "./components/NavbarComponent";
-import HeadComponent from "./components/HeadComponent";
+import JumbotronComponent from "./components/JumbotronComponent";
 
 function App() {
   return (
     <div className="App">
       <NavbarComponent />
-      <HeadComponent />
+      <JumbotronComponent />
       <MainComponent />
     </div>
   );

@@ -45,9 +45,12 @@ class MainComponent extends Component {
   render() {
     return (
       <>
-        <DisplayMovies row={"Harry Potter"} data={this.state.harry} />
-        <DisplayMovies row={"Star Wars"} data={this.state.star} />
-        <DisplayMovies row={"Lord of the Rings"} data={this.state.lord} />
+        <DisplayMovies row={"Harry Potter Movies"} data={this.state.harry} />
+        <DisplayMovies row={"Star Wars Movies"} data={this.state.star} />
+        <DisplayMovies
+          row={"Lord of the Rings Movies"}
+          data={this.state.lord}
+        />
       </>
     );
   }
