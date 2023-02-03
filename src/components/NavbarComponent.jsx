@@ -1,11 +1,4 @@
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 import avatar from "../assets/avatar.png";
 import logo from "../assets/netflix_logo.png";

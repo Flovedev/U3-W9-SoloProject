@@ -1,5 +1,6 @@
 import { Component } from "react";
 import DisplayMovies from "./DisplayMovies";
+import { Spinner, Alert } from "react-bootstrap";
 
 const url = "http://www.omdbapi.com/?i=tt3896198&apikey=3e33f678&s=";
 
@@ -8,6 +9,8 @@ class MainComponent extends Component {
     harry: [],
     star: [],
     lord: [],
+    isLoading: true,
+    isError: false,
   };
 
   fetchMovies = async (endpoint) => {
@@ -20,17 +23,23 @@ class MainComponent extends Component {
         endpoint === "harry+potter" &&
           this.setState({
             harry: data.Search,
+            isLoading: false,
           });
         endpoint === "star+wars" &&
           this.setState({
             star: data.Search,
+            isLoading: false,
           });
         endpoint === "lord+of+the+rings" &&
           this.setState({
             lord: data.Search,
+            isLoading: false,
           });
       } else {
-        console.log("response not ok");
+        this.setState({
+          isLoading: false,
+          isError: true,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -45,6 +54,11 @@ class MainComponent extends Component {
   render() {
     return (
       <>
+        {this.state.isLoading && ( // isLoading is true or false
+          <Spinner animation="border" variant="success" />
+        )}
+        {this.state.isError && <Alert variant="danger">We got an error!</Alert>}
+
         <DisplayMovies row={"Harry Potter Movies"} data={this.state.harry} />
         <DisplayMovies row={"Star Wars Movies"} data={this.state.star} />
         <DisplayMovies
