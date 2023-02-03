@@ -9,7 +9,7 @@ class SingleMovie extends Component {
   render() {
     return (
       <Col
-        className=""
+        className="cards-all"
         onMouseEnter={() => {
           this.setState({
             selected: true,

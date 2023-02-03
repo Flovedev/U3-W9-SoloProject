@@ -16,7 +16,7 @@ class MainComponent extends Component {
 
       if (res.ok) {
         let data = await res.json();
-        console.log(data.Search);
+        // console.log(data.Search);
         endpoint === "harry+potter" &&
           this.setState({
             harry: data.Search,

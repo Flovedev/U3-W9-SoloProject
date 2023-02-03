@@ -18,7 +18,7 @@ const JumbotronComponent = () => {
                 width="40"
                 height="40"
                 fill="currentColor"
-                class="bi bi-play-fill mr-2"
+                className="bi bi-play-fill mr-2"
                 viewBox="0 0 16 16"
               >
                 <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
@@ -31,7 +31,7 @@ const JumbotronComponent = () => {
                 width="40"
                 height="40"
                 fill="currentColor"
-                class="bi bi-info-circle mr-2"
+                className="bi bi-info-circle mr-2"
                 viewBox="0 0 16 16"
               >
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />

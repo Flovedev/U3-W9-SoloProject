@@ -92,6 +92,11 @@
   position: relative;
 }
 
+.selected {
+  scale: 1.1;
+  z-index: 2;
+}
+
 .cards-container {
   position: absolute;
   bottom: 0;
