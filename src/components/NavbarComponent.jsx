@@ -7,15 +7,31 @@ import {
   Button,
 } from "react-bootstrap";
 
+import logo from "../assets/netflix_logo.png";
+
 const NavbarComponent = () => {
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar expand="lg" className="" id="nav-bar">
+      <img src={logo} alt="netflix" className="netflix-logo" />
+      <Navbar.Brand href="#home"></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
+          <Nav.Link href="#home" className="text-white">
+            Home
+          </Nav.Link>
+          <Nav.Link href="#link" className="text-white">
+            TV Shows
+          </Nav.Link>
+          <Nav.Link href="#link" className="text-white">
+            Movies
+          </Nav.Link>
+          <Nav.Link href="#link" className="text-white">
+            Recently Added
+          </Nav.Link>
+          <Nav.Link href="#link" className="text-white">
+            My list
+          </Nav.Link>
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">

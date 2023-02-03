@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  background-color: #141414;
+  color: white;
 }
 
 .App-logo {
@@ -35,4 +36,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#nav-bar {
+  background-color: #141414;
+  color: #6f6e6c;
+}
+
+.netflix-logo {
+  width: 110px;
+  height: 50px;
+}
+
+Nav.Link {
+  color: white;
+}
+
+.card img {
+  /* width: 200px;
+  height: 290px; */
+}
+
+.cards-container {
+  /* position: absolute; */
+  z-index: 2;
 }
