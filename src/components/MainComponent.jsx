@@ -1,6 +1,7 @@
 import { Component } from "react";
 import DisplayMovies from "./DisplayMovies";
 import { Spinner, Alert } from "react-bootstrap";
+import JumbotronComponent from "./JumbotronComponent";
 
 const url = "http://www.omdbapi.com/?i=tt3896198&apikey=3e33f678&s=";
 
@@ -54,16 +55,27 @@ class MainComponent extends Component {
   render() {
     return (
       <>
+        <JumbotronComponent />
+
         {this.state.isLoading && ( // isLoading is true or false
           <Spinner animation="border" variant="success" />
         )}
         {this.state.isError && <Alert variant="danger">We got an error!</Alert>}
 
-        <DisplayMovies row={"Harry Potter Movies"} data={this.state.harry} />
-        <DisplayMovies row={"Star Wars Movies"} data={this.state.star} />
+        <DisplayMovies
+          row={"Harry Potter Movies"}
+          data={this.state.harry}
+          movie={"harry+potter"}
+        />
+        <DisplayMovies
+          row={"Star Wars Movies"}
+          data={this.state.star}
+          movie={"star+wars"}
+        />
         <DisplayMovies
           row={"Lord of the Rings Movies"}
           data={this.state.lord}
+          movie={"lord+of+the+rings"}
         />
       </>
     );

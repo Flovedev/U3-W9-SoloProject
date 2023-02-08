@@ -4,7 +4,7 @@ import sample from "../assets/harry.mov";
 const JumbotronComponent = () => {
   return (
     <>
-      <Jumbotron className="jumbotron p-0">
+      <Jumbotron className="jumbotron p-0 bg-transparent">
         <video autoPlay loop muted className="w-100">
           <source src={sample} type="video/mp4" />
         </video>

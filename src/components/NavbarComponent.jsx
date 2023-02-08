@@ -1,9 +1,12 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import avatar from "../assets/avatar.png";
 import logo from "../assets/netflix_logo.png";
 
 const NavbarComponent = () => {
+  const location = useLocation();
+
   return (
     <Navbar fixed="top" expand="lg" className="" id="nav-bar">
       <img src={logo} alt="netflix" className="netflix-logo" />
@@ -11,21 +14,51 @@ const NavbarComponent = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home" className="text-muted">
-            Home
-          </Nav.Link>
-          <Nav.Link href="#link" className="text-muted">
-            TV Shows
-          </Nav.Link>
-          <Nav.Link href="#link" className="text-white">
-            Movies
-          </Nav.Link>
-          <Nav.Link href="#link" className="text-muted">
-            Recently Added
-          </Nav.Link>
-          <Nav.Link href="#link" className="text-muted">
-            My list
-          </Nav.Link>
+          <Link to="/details">
+            <div
+              className={`nav.link pr-3 ${
+                location.pathname === "/" ? "active" : ""
+              }`}
+            >
+              Home
+            </div>
+          </Link>
+          <Link to="/tvshows">
+            <div
+              className={`pr-3 nav.link ${
+                location.pathname === "/tvshows" ? "active" : ""
+              }`}
+            >
+              TV Shows
+            </div>
+          </Link>
+          <Link to="/movies">
+            <div
+              className={`pr-3 nav.link ${
+                location.pathname === "/movies" ? "text-white" : ""
+              }`}
+            >
+              Movies
+            </div>
+          </Link>
+          <Link to="/recently">
+            <div
+              className={`nav.link pr-3 ${
+                location.pathname === "/recently" ? "active" : ""
+              }`}
+            >
+              Recently Added
+            </div>
+          </Link>
+          <Link to="/mylist">
+            <div
+              className={`nav.link pr-3 ${
+                location.pathname === "/mylist" ? "active" : ""
+              }`}
+            >
+              My list
+            </div>
+          </Link>
         </Nav>
 
         <svg

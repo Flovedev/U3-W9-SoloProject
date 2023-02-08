@@ -42,6 +42,15 @@
   background-color: transparent;
 }
 
+#basic-navbar-nav > div a {
+  /* text-decoration: none; */
+  color: grey;
+}
+
+#basic-navbar-nav > div a:hover {
+  text-decoration: none;
+}
+
 #basic-nav-dropdown {
   color: grey;
 }
@@ -54,11 +63,11 @@
   color: white;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   #nav-bar {
     background-color: #141414;
   }
-}
+} */
 
 .netflix-logo {
   width: 110px;
@@ -100,4 +109,8 @@
 .carousel-control-prev,
 .carousel-control-next {
   width: 40px;
+}
+
+.cards-details img {
+  width: 200px;
 }
