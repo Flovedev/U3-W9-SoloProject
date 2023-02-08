@@ -122,3 +122,7 @@
 .cards-details {
   height: 600px;
 }
+
+#problems-handle {
+  height: 100vh;
+}

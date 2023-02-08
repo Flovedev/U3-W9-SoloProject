@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Row, Container, Spinner } from "react-bootstrap";
+import { Card, Row, Container, Spinner, Alert } from "react-bootstrap";
 import SingleComment from "./SingleComment";
 
 const url = "http://www.omdbapi.com/?i=tt3896198&apikey=3e33f678&s=";
@@ -20,6 +20,9 @@ const MovieDetails = () => {
   const [actualMovie, setActualMovie] = useState([]);
   const [comments, setComments] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   const fetchMovie = async (endpoint) => {
     try {
       let res = await fetch(url + endpoint);
@@ -27,10 +30,14 @@ const MovieDetails = () => {
         let data = await res.json();
         // console.log(data.Search);
         setMovie(data.Search);
+        setIsLoading(false);
       } else {
-        console.log("response not ok");
+        setIsLoading(false);
+        setIsError(true);
       }
     } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
       console.log(error);
     }
   };
@@ -41,10 +48,14 @@ const MovieDetails = () => {
       if (res.ok) {
         let data = await res.json();
         setComments(data);
+        setIsLoading(false);
       } else {
-        console.log("response not ok");
+        setIsLoading(false);
+        setIsError(true);
       }
     } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
       console.log(error);
     }
   };
@@ -56,11 +67,6 @@ const MovieDetails = () => {
   }, []);
 
   useEffect(() => {
-    console.log(comments);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [comments]);
-
-  useEffect(() => {
     let findMovie = movie.find((e) => e.imdbID === params.movieId);
     setActualMovie(findMovie);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +75,7 @@ const MovieDetails = () => {
   return (
     <>
       {actualMovie ? (
-        <Container className="py-5">
+        <Container className="py-5 details-container">
           <Row className="mt-5">
             <Card className="bg-dark cards-details">
               <Card.Img
@@ -95,7 +101,15 @@ const MovieDetails = () => {
           </Row>
         </Container>
       ) : (
-        <Spinner variant="info" animation="border" />
+        <div
+          className="d-flex justify-content-center align-items-center"
+          id="problems-handle"
+        >
+          {isLoading && ( // isLoading is true or false
+            <Spinner animation="border" variant="success" />
+          )}
+          {isError && <Alert variant="danger">We got an error!</Alert>}
+        </div>
       )}
     </>
   );
