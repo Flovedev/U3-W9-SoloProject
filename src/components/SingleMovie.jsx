@@ -1,5 +1,6 @@
 import { Component } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class SingleMovie extends Component {
   state = {
@@ -24,9 +25,14 @@ class SingleMovie extends Component {
         <div className="cards-main">
           <img src={this.props.img} alt="" className="w-100" />
           {this.state.selected === true && (
-            <div className="bg-dark cards-container" disabled>
-              <p className="px-2 pb-0">{this.props.title}</p>
-            </div>
+            <>
+              <div className="cards-container" disabled>
+                <Link to={"/details/" + this.props.movie + "/" + this.props.id}>
+                  <Button variant="warning">Details</Button>
+                </Link>
+                <p className="px-2 pb-0 bg-dark">{this.props.title}</p>
+              </div>
+            </>
           )}
         </div>
       </Col>

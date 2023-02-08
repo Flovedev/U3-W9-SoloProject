@@ -69,7 +69,7 @@ const MovieDetails = () => {
   return (
     <>
       {actualMovie ? (
-        <Container className="py-5 mb-5">
+        <Container className="py-5">
           <Row className="mt-5">
             <Card className="bg-dark cards-details">
               <Card.Img

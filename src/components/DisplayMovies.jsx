@@ -12,16 +12,13 @@ const DisplayMovies = ({ row, data, movie }) => {
             <Row xs={1} sm={2} md={3} lg={5}>
               {data.slice(0, 5).map((res) => {
                 return (
-                  <Link
-                    to={"/details/" + movie + "/" + res.imdbID}
+                  <SingleMovie
+                    title={res.Title}
+                    img={res.Poster}
+                    id={res.imdbID}
+                    movie={movie}
                     key={res.imdbID}
-                  >
-                    <SingleMovie
-                      title={res.Title}
-                      img={res.Poster}
-                      id={res.imdbID}
-                    />
-                  </Link>
+                  />
                 );
               })}
             </Row>
@@ -32,16 +29,13 @@ const DisplayMovies = ({ row, data, movie }) => {
             <Row xs={1} sm={2} md={3} lg={5}>
               {data.slice(5, 10).map((res) => {
                 return (
-                  <Link
-                    to={"/details/" + movie + "/" + res.imdbID}
+                  <SingleMovie
+                    title={res.Title}
+                    img={res.Poster}
+                    id={res.imdbID}
+                    movie={movie}
                     key={res.imdbID}
-                  >
-                    <SingleMovie
-                      title={res.Title}
-                      img={res.Poster}
-                      id={res.imdbID}
-                    />
-                  </Link>
+                  />
                 );
               })}
             </Row>
