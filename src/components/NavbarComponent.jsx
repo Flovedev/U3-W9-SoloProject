@@ -26,7 +26,7 @@ const NavbarComponent = () => {
           <Link to="/tvshows">
             <div
               className={`pr-3 nav.link ${
-                location.pathname === "/tvshows" ? "active" : ""
+                location.pathname === "/tvshows" ? "text-white" : ""
               }`}
             >
               TV Shows

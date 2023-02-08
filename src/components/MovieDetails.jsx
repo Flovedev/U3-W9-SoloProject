@@ -1,16 +1,24 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Row, Container, Spinner } from "react-bootstrap";
+import SingleComment from "./SingleComment";
 
 const url = "http://www.omdbapi.com/?i=tt3896198&apikey=3e33f678&s=";
-const commentsUrl = "";
+const commentsUrl = "https://striveschool-api.herokuapp.com/api/comments/";
+let options = {
+  headers: {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RiYjU3YTUwMWZlODAwMTU2MGMyMjEiLCJpYXQiOjE2NzUzNDMyMjYsImV4cCI6MTY3NjU1MjgyNn0.kD8SKBkO7B3HP-huMyKWWJhUSkujtWi4yirP9xz6SSA",
+  },
+};
 
 const MovieDetails = () => {
   const params = useParams();
-  console.log("Params:", params);
+  //   console.log("Params:", params);
 
   const [movie, setMovie] = useState([]);
   const [actualMovie, setActualMovie] = useState([]);
+  const [comments, setComments] = useState([]);
 
   const fetchMovie = async (endpoint) => {
     try {
@@ -29,9 +37,10 @@ const MovieDetails = () => {
 
   const fetchComments = async () => {
     try {
-      let res = await fetch(commentsUrl);
+      let res = await fetch(commentsUrl + params.movieId, options);
       if (res.ok) {
         let data = await res.json();
+        setComments(data);
       } else {
         console.log("response not ok");
       }
@@ -42,8 +51,14 @@ const MovieDetails = () => {
 
   useEffect(() => {
     fetchMovie(params.movie);
+    fetchComments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log(comments);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [comments]);
 
   useEffect(() => {
     let findMovie = movie.find((e) => e.imdbID === params.movieId);
@@ -54,18 +69,29 @@ const MovieDetails = () => {
   return (
     <>
       {actualMovie ? (
-        <Container className="pt-5">
+        <Container className="py-5 mb-5">
           <Row className="mt-5">
             <Card className="bg-dark cards-details">
-              <Card.Img variant="top" src={actualMovie.Poster} />
+              <Card.Img
+                variant="top"
+                className="w-100"
+                src={actualMovie.Poster}
+              />
               <Card.Body className="">
                 <Card.Title>{actualMovie.Title}</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
               </Card.Body>
             </Card>
+            <div className="ml-4">
+              {comments.map((e) => {
+                return (
+                  <SingleComment
+                    key={e._id}
+                    comment={e.comment}
+                    rate={e.rate}
+                  />
+                );
+              })}
+            </div>
           </Row>
         </Container>
       ) : (

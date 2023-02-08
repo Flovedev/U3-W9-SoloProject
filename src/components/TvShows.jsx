@@ -1,7 +1,10 @@
 const TvShow = () => {
   return (
-    <div className="pt-5">
-      <p>TV SHOWS</p>
+    <div
+      className="pt-5 d-flex justify-content-center align-items-center"
+      id="tv-shows"
+    >
+      <p>Here comes the TV Shows page</p>
     </div>
   );
 };
