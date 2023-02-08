@@ -1,5 +1,5 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import avatar from "../assets/avatar.png";
 import logo from "../assets/netflix_logo.png";

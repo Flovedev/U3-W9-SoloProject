@@ -1,6 +1,5 @@
 import SingleMovie from "./SingleMovie";
 import { Carousel, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const DisplayMovies = ({ row, data, movie }) => {
   return (
