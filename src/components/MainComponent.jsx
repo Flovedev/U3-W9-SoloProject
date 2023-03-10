@@ -19,7 +19,7 @@ class MainComponent extends Component {
       const res = await fetch(process.env.REACT_APP_BE_URL + "/medias");
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         let harryResult = data.filter((e) => e.Title.includes("Harry"));
         let starResult = data.filter((e) => e.Title.includes("Star"));
         let lordResult = data.filter((e) => e.Title.includes("Lord"));

@@ -23,13 +23,14 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const fetchMovie = async (endpoint) => {
+  const fetchMovie = async () => {
     try {
-      let res = await fetch(url + endpoint);
+      let res = await fetch(
+        process.env.REACT_APP_BE_URL + "/medias/" + params.movieId
+      );
       if (res.ok) {
         let data = await res.json();
-        // console.log(data.Search);
-        setMovie(data.Search);
+        setMovie(data);
         setIsLoading(false);
       } else {
         setIsLoading(false);
@@ -47,6 +48,7 @@ const MovieDetails = () => {
       let res = await fetch(commentsUrl + params.movieId, options);
       if (res.ok) {
         let data = await res.json();
+        // console.log(data);
         setComments(data);
         setIsLoading(false);
       } else {
@@ -61,30 +63,26 @@ const MovieDetails = () => {
   };
 
   useEffect(() => {
-    fetchMovie(params.movie);
+    fetchMovie();
     fetchComments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    let findMovie = movie.find((e) => e.imdbID === params.movieId);
-    setActualMovie(findMovie);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movie]);
+  // useEffect(() => {
+  //   let findMovie = movie.find((e) => e.imdbID === params.movieId);
+  //   setActualMovie(findMovie);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [movie]);
 
   return (
     <>
-      {actualMovie ? (
+      {movie ? (
         <Container className="py-5 details-container">
           <Row className="mt-5">
             <Card className="bg-dark cards-details">
-              <Card.Img
-                variant="top"
-                className="w-100"
-                src={actualMovie.Poster}
-              />
+              <Card.Img variant="top" className="w-100" src={movie.Poster} />
               <Card.Body className="">
-                <Card.Title>{actualMovie.Title}</Card.Title>
+                <Card.Title>{movie.Title}</Card.Title>
               </Card.Body>
             </Card>
             <div className="ml-4">

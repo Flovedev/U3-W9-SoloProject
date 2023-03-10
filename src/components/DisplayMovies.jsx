@@ -1,24 +1,7 @@
 import SingleMovie from "./SingleMovie";
 import { Carousel, Container, Row } from "react-bootstrap";
-import { useEffect } from "react";
 
 const DisplayMovies = ({ row, data, movie }) => {
-  const fetchAPI = async () => {
-    try {
-      const res = await fetch(process.env.REACT_APP_BE_URL + "/medias");
-      if (res.ok) {
-        const data = await res.json();
-        console.log(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchAPI();
-  }, []);
-
   return (
     <div className="displayers mx-4 mb-4">
       <h3 className="mb-4">{row}</h3>
