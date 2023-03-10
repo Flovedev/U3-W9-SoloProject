@@ -3,21 +3,21 @@ import { useParams } from "react-router-dom";
 import { Card, Row, Container, Spinner, Alert } from "react-bootstrap";
 import SingleComment from "./SingleComment";
 
-const url = "http://www.omdbapi.com/?i=tt3896198&apikey=3e33f678&s=";
-const commentsUrl = "https://striveschool-api.herokuapp.com/api/comments/";
-let options = {
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RiYjU3YTUwMWZlODAwMTU2MGMyMjEiLCJpYXQiOjE2NzUzNDMyMjYsImV4cCI6MTY3NjU1MjgyNn0.kD8SKBkO7B3HP-huMyKWWJhUSkujtWi4yirP9xz6SSA",
-  },
-};
+// const url = "http://www.omdbapi.com/?i=tt3896198&apikey=3e33f678&s=";
+// const commentsUrl = "https://striveschool-api.herokuapp.com/api/comments/";
+// let options = {
+//   headers: {
+//     Authorization:
+//       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RiYjU3YTUwMWZlODAwMTU2MGMyMjEiLCJpYXQiOjE2NzUzNDMyMjYsImV4cCI6MTY3NjU1MjgyNn0.kD8SKBkO7B3HP-huMyKWWJhUSkujtWi4yirP9xz6SSA",
+//   },
+// };
 
 const MovieDetails = () => {
   const params = useParams();
   //   console.log("Params:", params);
 
   const [movie, setMovie] = useState([]);
-  const [actualMovie, setActualMovie] = useState([]);
+  // const [actualMovie, setActualMovie] = useState([]);
   const [comments, setComments] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +45,9 @@ const MovieDetails = () => {
 
   const fetchComments = async () => {
     try {
-      let res = await fetch(commentsUrl + params.movieId, options);
+      let res = await fetch(
+        process.env.REACT_APP_BE_URL + "/medias/" + params.movieId + "/reviews"
+      );
       if (res.ok) {
         let data = await res.json();
         // console.log(data);
